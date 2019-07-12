@@ -6,5 +6,12 @@
 * nginx
 * php-fpm7.0
 
-
 [php-fpm7.0配置及描述](https://hub.docker.com/r/muyong/php7.0-fpm/) ---多年以前,本打算详细写完,现在已经废弃
+
+---
+<h1 align="center">新 的 开 始</h1>
+# 简介
+
+> 新的镜像使用alpine 进行构建（原镜像使用的是ubuntu）,使镜像文件大小从几百M 变为几十M
+
+![镜像大小对比](https://s2.ax1x.com/2019/07/12/ZfKFx0.png "镜像大小的对比")

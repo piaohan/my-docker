@@ -1,2 +1,3 @@
-
-
+/ components/mysql/data/*
+/ logs/*
+/ wwwroot/*

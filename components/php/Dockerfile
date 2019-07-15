@@ -13,6 +13,6 @@ LABEL maintainer="Leo.Mu <whatissrc@gmail.com> 2019-07-12"
 #     && cp /usr/share/zoneinfo/$TZ /etc/localtime \
 #     && apk del tzdata
 
-CMD [ "sh" ]
+CMD [ "sh","docker-php-entrypoint","php-fpm" ]
 
 

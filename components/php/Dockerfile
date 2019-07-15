@@ -23,6 +23,6 @@ RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" &&
     composer self-update
 
 
-CMD [ "/bin/sh" , "docker-php-entrypoint" , "php-fpm" ]
+CMD [ "/bin/sh" , "php-fpm" , "composer" ]
 
 

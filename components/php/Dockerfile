@@ -1,4 +1,4 @@
-FROM muyong/php7.2:v2
+FROM muyong/php7:2.0
 
 LABEL maintainer="Leo.Mu <whatissrc@gmail.com> 2019-07-12"
 # 时区设置

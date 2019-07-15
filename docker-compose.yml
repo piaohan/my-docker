@@ -20,7 +20,6 @@ services:
   #     - "php"
   php:
     build: "$PWD/components/php"
-    image: muyong/php7.2:v2
     container_name: docker-php
     networks: 
       - lnmp

@@ -13,6 +13,11 @@ LABEL maintainer="Leo.Mu <whatissrc@gmail.com> 2019-07-12"
 #     && cp /usr/share/zoneinfo/$TZ /etc/localtime \
 #     && apk del tzdata
 
-CMD [ "sh","docker-php-entrypoint","php-fpm" ]
+# 安装composer
+RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" && \
+    php composer-setup.php && \
+    php -r "unlink('composer-setup.php');" && \
+    mv composer.phar /usr/local/bin/composer && \
+    composer self-update
 
 

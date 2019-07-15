@@ -1,8 +1,9 @@
 version: '3'
 services:
+  #nginx
   nginx:
     build: "$PWD/components/php"
-    image: nginx:latest
+    image: lnmp-nginx
     container_name: docker-nginx
     networks: 
       - lnmp
@@ -19,44 +20,49 @@ services:
       - "mysql"
       - "redis"
       - "php"
-  # php:
-  #   build: "$PWD/components/php"
-  #   container_name: docker-php
-  #   networks: 
-  #     - lnmp
-  #   ports:
-  #     - "9000:9000"
-  #   volumes:
-  #     - "$PWD/wwwroot/:/var/www/"
-  #     - "$PWD/components/php/conf/php.ini:/usr/local/etc/php/php.ini"
-  #     - "$PWD/components/php/conf/php-fpm.d/www.conf:/usr/local/etc/php-fpm.d/www.conf"
-  #     - "$PWD/logs/php-fpm/:/var/log/php-fpm/"
-  #   working_dir: /var/www/
-  # mysql:
-  #   image: mysql:5.7
-  #   container_name: docker-mysql
-  #   networks: 
-  #     - lnmp
-  #   ports:
-  #     - "3306:3306"
-  #   volumes:
-  #     - "$PWD/wwwroot/:/var/www/"
-  #     - "$PWD/components/mysql/conf/my.cnf:/etc/mysql/my.cnf"
-  #     - "$PWD/components/mysql/data:/var/lib/mysql/"
-  #     - "$PWD/logs/mysql/:/var/log/mysql/"
-  #   command: --character-set-server=utf8
-  #   environment:
-  #     MYSQL_ROOT_PASSWORD: 123456
-  #     MYSQL_DATABASE: admin
-  #     MYSQL_USER: admin
-  #     MYSQL_PASSWORD: admin123456
-  # redis:
-  #   image: redis:5.0.5-alpine
-  #   container_name: docker-redis
-  #   networks: 
-  #     - lnmp
-  #   ports:
-  #     - "6379:6379"
+  #php
+  php:
+    build: "$PWD/components/php"
+    image: lnmp-php
+    container_name: docker-php
+    networks: 
+      - lnmp
+    ports:
+      - "9000:9000"
+    volumes:
+      - "$PWD/wwwroot/:/var/www/"
+      - "$PWD/components/php/conf/php.ini:/usr/local/etc/php/php.ini"
+      - "$PWD/components/php/conf/php-fpm.d/www.conf:/usr/local/etc/php-fpm.d/www.conf"
+      - "$PWD/logs/php-fpm/:/var/log/php-fpm/"
+    working_dir: /var/www/
+  #mysql
+  mysql:
+    image: mysql:5.7
+    container_name: docker-mysql
+    networks: 
+      - lnmp
+    ports:
+      - "3306:3306"
+    volumes:
+      - "$PWD/wwwroot/:/var/www/"
+      - "$PWD/components/mysql/conf/my.cnf:/etc/mysql/my.cnf"
+      - "$PWD/components/mysql/data:/var/lib/mysql/"
+      - "$PWD/logs/mysql/:/var/log/mysql/"
+    command: --character-set-server=utf8
+    environment:
+      MYSQL_ROOT_PASSWORD: 123456
+      MYSQL_DATABASE: admin
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: admin123456
+  #redis
+  redis:
+    build: "$PWD/components/redis"
+    image: docker-redis
+    container_name: docker-redis
+    networks: 
+      - lnmp
+    ports:
+      - "6379:6379"
 networks: 
   lnmp:
     driver: bridge

@@ -2,8 +2,7 @@ version: '3'
 services:
   #nginx
   nginx:
-    build: "$PWD/components/php"
-    image: lnmp-nginx
+    build: "$PWD/components/nginx"
     container_name: docker-nginx
     networks: 
       - lnmp
@@ -23,7 +22,6 @@ services:
   #php
   php:
     build: "$PWD/components/php"
-    image: lnmp-php
     container_name: docker-php
     networks: 
       - lnmp

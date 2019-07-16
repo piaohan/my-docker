@@ -15,6 +15,7 @@ RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories
     && apk del --no-cache  tzdata  libzip-dev\
     && rm -rf /var/cache/apk/* \
     && curl -sS https://getcomposer.org/installer | \
-    php -- --install-dir=/usr/bin/ --filename=composer
+    php -- --install-dir=/usr/bin/ --filename=composer \
+    && composer config -g repo.packagist composer https://mirrors.aliyun.com/composer/
 
 WORKDIR /var/www/

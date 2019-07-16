@@ -29,8 +29,10 @@ services:
       - "9000:9000"
     volumes:
       - "$PWD/wwwroot/:/var/www/"
-      - "$PWD/components/php/conf/php.ini:/usr/local/etc/php/php.ini"
-      - "$PWD/components/php/conf/php-fpm.d/www.conf:/usr/local/etc/php-fpm.d/www.conf"
+      # - "$PWD/components/php/conf/php.ini:/usr/local/etc/php/php.ini"
+      # - "$PWD/components/php/conf/php-fpm.d/www.conf:/usr/local/etc/php-fpm.d/www.conf"
+      - "$PWD/components/php/conf/php.ini:/etc/php7/php.ini"
+      - "$PWD/components/php/conf/php-fpm.d/www.conf:/etc/php7/php-fpm.d/www.conf"
       - "$PWD/logs/php-fpm/:/var/log/php-fpm/"
     working_dir: /var/www/
   #mysql

@@ -1,8 +1,7 @@
-FROM alpine
+FROM muyong/php7
 
 LABEL maintainer "Leo.Mu <whatissrc@gmail.com>"
 
-# 时区设置
 ENV TIMEZONE Asia/Shanghai
 ENV COMPOSER_ALLOW_SUPERUSER 1
 

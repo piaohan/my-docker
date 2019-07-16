@@ -3,7 +3,6 @@ FROM muyong/nginx
 LABEL maintainer="Leo.Mu <whatissrc@gmail.com>"
 
 ENV TIMEZONE Asia/Shanghai
-ENV COMPOSER_ALLOW_SUPERUSER 1
 
 RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories  | \
     && apk update \

@@ -26,7 +26,7 @@ services:
     networks: 
       - lnmp
     ports:
-      - ${php-fpm_port}:9000
+      - ${phpfpm_port}:9000
     volumes:
       - "$PWD/wwwroot/:/var/www/"
       # - "$PWD/components/php/conf/php.ini:/usr/local/etc/php/php.ini"

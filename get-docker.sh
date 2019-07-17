@@ -48,5 +48,5 @@ docker-compose -v
 
 install-docker
 install-compose
-update-gourp
 version
+update-gourp

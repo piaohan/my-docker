@@ -25,6 +25,8 @@ align=center>
 
 # 使用方法
 
+## ubuntu：
+> 我使用的环境是ubuntu16.04
 ```shell
 #1.脚本自动安装docker和docker-compose（已经安装请跳过这一步）
     #1.克隆项目
@@ -33,10 +35,10 @@ align=center>
     #2.进入项目
     cd my-docker
     
-    #3.将脚本修改为可执行
+    #3.将脚本修改为可执行(如果第4步命令可以执行 请跳过这一步)
     chmod +x get-docker.sh
     
-    #4.执行该脚本
+    #4.执行该脚本（不能执行，请参考上一步）
     ./get-docker.sh
 
 #2.使用docker-compose编排自动构建环境(相关的环境需求可以修改 docker-compose.yml 文件)

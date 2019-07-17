@@ -2,15 +2,15 @@ FROM muyong/php7
 
 LABEL maintainer "Leo.Mu <whatissrc@gmail.com>"
 
-ENV TIMEZONE ${TIMEZONE}
-ENV COMPOSER_ALLOW_SUPERUSER ${COMPOSER_ALLOW_SUPERUSER}
+ARG TIMEZONE
+ARG COMPOSER_ALLOW_SUPERUSER
 
 RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories   \
     && apk update \
     && apk add --no-cache \
     libzip-dev \
     tzdata \
-    && cp /usr/share/zoneinfo/${TIMEZONE} /etc/localtime \
+    && cp /usr/share/zoneinfo/$TIMEZONE /etc/localtime \
     && docker-php-ext-install -j $(nproc) zip \
     && apk del --no-cache  tzdata  libzip-dev\
     && rm -rf /var/cache/apk/* \

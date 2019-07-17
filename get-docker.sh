@@ -27,23 +27,26 @@ sudo apt install -y docker-ce
 
 install-compose () {
   sudo apt update
-  echo -e "\033[5;32m 2-[1/2]install python3pip \033[0m"
+  echo -e "\033[1;32m 2-[1/2]install python3pip \033[0m"
   sudo apt install -y python3-pip
-  echo -e "\033[5;32m 2-[2/2]install docker-compose \033[0m"
+  echo -e "\033[1;32m 2-[2/2]install docker-compose \033[0m"
   sudo pip3 install docker-compose
+}
+update-gourp(){
+echo -e "\033[1;32m 3-[1/2]user add to dicker gourp \033[0m"
+sudo usermod -a -G docker $USER
+echo -e "\033[1;32m 3-[1/2]update gourp \033[0m"
+newgrp docker
 }
 
 last(){
-echo -e "\033[5;32m 3-[1/2]user add to dicker gourp \033[0m"
-sudo usermod -a -G docker $USER
-echo -e "\033[5;32m 3-[1/2]update gourp \033[0m"
-newgrp docker
-echo -e "\033[5;32m docker version \033[0m"
+echo -e "\033[1;32m 4-[1/2]docker version \033[0m"
 docker -v
-echo -e "\033[5;32m docker-compose version \033[0m"
+echo -e "\033[1;32m 4-[2/2]docker-compose version \033[0m"
 docker-compose -v
 }
 
 install-docker
 install-compose
+update-gourp
 last

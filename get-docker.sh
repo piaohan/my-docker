@@ -33,20 +33,20 @@ install-compose () {
   sudo pip3 install docker-compose
 }
 update-gourp(){
-echo -e "\033[1;32m 3-[1/2]user add to dicker gourp \033[0m"
+echo -e "\033[1;32m 4-[1/2]user add to dicker gourp \033[0m"
 sudo usermod -a -G docker $USER
-echo -e "\033[1;32m 3-[1/2]update gourp \033[0m"
+echo -e "\033[1;32m 4-[1/2]update gourp \033[0m"
 newgrp docker
 }
 
-last(){
-echo -e "\033[1;32m 4-[1/2]docker version \033[0m"
+version(){
+echo -e "\033[1;32m 3-[1/2]docker version \033[0m"
 docker -v
-echo -e "\033[1;32m 4-[2/2]docker-compose version \033[0m"
+echo -e "\033[1;32m 3-[2/2]docker-compose version \033[0m"
 docker-compose -v
 }
 
 install-docker
 install-compose
 update-gourp
-last
+version

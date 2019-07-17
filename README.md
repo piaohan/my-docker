@@ -29,17 +29,23 @@ align=center>
 #1.脚本自动安装docker和docker-compose（已经安装请跳过这一步）
     #1.克隆项目
     git clone https://github.com/piaohan/my-docker.git
+    
     #2.进入项目
     cd my-docker
+    
     #3.将脚本修改为可执行
     chmod +x get-docker.sh
+    
     #4.执行该脚本
     ./get-docker.sh
+
 #2.使用docker-compose编排自动构建环境(相关的环境需求可以修改 docker-compose.yml 文件)
     #1.启动(首次运行请加上 --build 参数)
     docker-compose up -d [--build] 
+    
     #2.停止并销毁容器
     docker-compose down
+    
     #3.更多相关指令 请使用 -h 查看
 ```
 # 注意

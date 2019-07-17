@@ -5,28 +5,32 @@
 <h1 align="center">新 的 开 始</h1>
 
 
-# docker自建镜像
+# 目前编排的镜像📝
 
-* php7
+* php7.2
 * mysql5.7
 * nginx
 * redis
+* beanstalkd
 
-# 简介
+后面会慢慢加。。。
 
-> 新的镜像使用alpine 进行构建（原镜像使用的是ubuntu）,使镜像文件大小从几百M 变为几十M
+# 简介 👇
+
+> 新的镜像使用alpine 进行构建（而原镜像使用的是ubuntu）,使镜像文件大小从几百M 变为几十M
 
 * PHP:的镜像大小对比
-<img src="https://s2.ax1x.com/2019/07/12/ZfKFx0.png" width = "300" height = "300" alt="镜像大小对比" 
+
+<img src="https://s2.ax1x.com/2019/07/12/ZfKFx0.png" width = "300" height = "200" alt="镜像大小对比" 
 align=center>
 * nginx 镜像大小对比
-<img src="https://s2.ax1x.com/2019/07/15/Zo1IyQ.png" width = "300" height = "300" alt="镜像大小对比" 
+
+<img src="https://s2.ax1x.com/2019/07/15/Zo1IyQ.png" width = "300" height = "200" alt="镜像大小对比" 
 align=center>
 
-# 使用方法
+# 怎么玩？ 🚀 
 
-## ubuntu：
-> 我使用的环境是ubuntu16.04
+我使用的环境是ubuntu16.04
 ```shell
 #1.脚本自动安装docker和docker-compose（已经安装请跳过这一步）
     #1.克隆项目
@@ -50,7 +54,12 @@ align=center>
     
     #3.更多相关指令 请使用 -h 查看
 ```
-# 注意
+# 有一点想法的 🤔
+> 其实 我是想直接一个脚本 然后就安装并且部署docker环境的，只是觉得不是很合适。
+> 所以还是分的2步：1.是安装docker环境 2.是执行docker-compose编排
 
-> 使用docker需要知道镜像和容器的概念，注意分区
-> 希望能给我提供宝贵的建议，不要忘了给我个星星 谢谢
+# 注意 ⭐
+
+> 1.使用docker需要知道镜像和容器的概念，注意分区
+
+> 2.希望能给我提供宝贵的建议，不要忘了给我个星星 谢谢

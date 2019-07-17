@@ -63,6 +63,15 @@ services:
       - lnmp
     ports:
       - ${redis_port}:6379
+  #beanstalkd
+  beanstalkd:
+    build: "$PWD/components/beanstalkd"
+    image: docker-beanstalkd
+    container_name: docker-beanstalkd
+    networks: 
+      - lnmp
+    ports:
+      - ${beanstalkd_port}:11300
 networks: 
   lnmp:
     driver: bridge

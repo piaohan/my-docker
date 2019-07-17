@@ -9,7 +9,7 @@ RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories
     && apk add --no-cache \
     beanstalkd\
     tzdata \
-    && cp /usr/share/zoneinfo/$TIMEZONE /etc/localtime \
+    && cp /usr/share/zoneinfo/${TIMEZONE} /etc/localtime \
     && apk del --no-cache  tzdata \
     && rm -rf /var/cache/apk/* 
 

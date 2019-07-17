@@ -10,7 +10,7 @@ RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories
     && apk add \
     libzip-dev \
     tzdata \
-    && cp /usr/share/zoneinfo/$TIMEZONE /etc/localtime \
+    && cp /usr/share/zoneinfo/${TIMEZONE} /etc/localtime \
     && docker-php-ext-install -j $(nproc) zip \
     && apk del --no-cache  tzdata  libzip-dev\
     && rm -rf /var/cache/apk/* \

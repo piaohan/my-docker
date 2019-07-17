@@ -27,7 +27,9 @@ install-compose () {
 
 last(){
 sudo usermod -a -G docker $USER
-docker-v
+echo -e "\033[5;32m docker version \033[0m"
+docker -v
+echo -e "\033[5;32m docker-compose version \033[0m"
 docker-compose -v
 }
 

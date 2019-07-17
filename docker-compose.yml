@@ -28,6 +28,7 @@ services:
         context: $PWD/components/php
         args:
           - TIMEZONE=${WORKSPACE_TIMEZONE}
+          - COMPOSER_ALLOW_SUPERUSER=${COMPOSER_ALLOW_SUPERUSER}
     container_name: docker-php
     networks: 
       - lnmp

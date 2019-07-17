@@ -7,7 +7,7 @@ ENV COMPOSER_ALLOW_SUPERUSER ${COMPOSER_ALLOW_SUPERUSER}
 
 RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories   \
     && apk update \
-    && apk add \
+    && apk add --no-cache \
     libzip-dev \
     tzdata \
     && cp /usr/share/zoneinfo/${TIMEZONE} /etc/localtime \

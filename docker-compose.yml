@@ -2,7 +2,10 @@ version: '3'
 services:
   #nginx
   nginx:
-    build: "$PWD/components/nginx"
+    build:
+        context: $PWD/components/nginx
+        args:
+          - TIMEZONE=${WORKSPACE_TIMEZONE}
     container_name: docker-nginx
     networks: 
       - lnmp
@@ -21,7 +24,10 @@ services:
       - "php"
   #php
   php:
-    build: "$PWD/components/php"
+    build:
+        context: $PWD/components/php
+        args:
+          - TIMEZONE=${WORKSPACE_TIMEZONE}
     container_name: docker-php
     networks: 
       - lnmp
@@ -56,7 +62,10 @@ services:
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
   #redis
   redis:
-    build: "$PWD/components/redis"
+    build:
+        context: $PWD/components/redis
+        args:
+          - TIMEZONE=${WORKSPACE_TIMEZONE}
     image: docker-redis
     container_name: docker-redis
     networks: 
@@ -65,7 +74,10 @@ services:
       - ${redis_port}:6379
   #beanstalkd
   beanstalkd:
-    build: "$PWD/components/beanstalkd"
+    build:
+        context: $PWD/components/beanstalkd
+        args:
+          - TIMEZONE=${WORKSPACE_TIMEZONE}
     image: docker-beanstalkd
     container_name: docker-beanstalkd
     networks: 

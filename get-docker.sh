@@ -30,7 +30,7 @@ install-compose () {
   echo -e "\033[1;32m 2-[1/2]install python3pip \033[0m"
   sudo apt install -y python3-pip
   echo -e "\033[1;32m 2-[2/2]install docker-compose \033[0m"
-  sudo pip3 install docker-compose
+  sudo pip3 install -U docker-compose
 }
 update-gourp(){
 echo -e "\033[1;32m 4-[1/2]user add to dicker gourp \033[0m"

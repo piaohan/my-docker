@@ -88,7 +88,7 @@ services:
   #mailhog
   mailhog:
     build:
-        context: $PWD/components/mailhog
+        context: $PWD/components/mailHog
         args:
           - TIMEZONE=${WORKSPACE_TIMEZONE}
     image: docker-mailhog

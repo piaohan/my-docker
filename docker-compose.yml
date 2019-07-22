@@ -86,18 +86,18 @@ services:
     ports:
       - ${beanstalkd_port}:11300
   #mailhog
-  mailHog:
+  mailhog:
     build:
-        context: $PWD/components/mailHog
+        context: $PWD/components/mailhog
         args:
           - TIMEZONE=${WORKSPACE_TIMEZONE}
-    image: docker-mailHog
-    container_name: docker-mailHog
+    image: docker-mailhog
+    container_name: docker-mailhog
     networks: 
       - lnmp
     ports:
-      - ${mailHog_seedMail_port}:1025
-      - ${mailHog_web_port}:8025
+      - ${mailhog_seedMail_port}:1025
+      - ${mailhog_web_port}:8025
 networks: 
   lnmp:
     driver: bridge

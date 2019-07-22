@@ -9,11 +9,11 @@ RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories
     && export GOPATH=/root/gocode \
     && go get github.com/mailhog/MailHog \
     && mv /root/gocode/bin/MailHog /usr/local/bin \
-    && rm -rf /root/gocode \
     && cp /usr/share/zoneinfo/$TIMEZONE /etc/localtime \
     && apk del --no-cache  tzdata \
     && apk del --purge build-dependencies \
     && rm -rf /var/cache/apk/* \
+    && rm -rf /root/gocode \
     && adduser -D -u 1000 mailhog
 
 USER mailhog

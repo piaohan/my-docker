@@ -91,8 +91,8 @@ services:
         context: $PWD/components/mailHog
         args:
           - TIMEZONE=${WORKSPACE_TIMEZONE}
-    image: docker-mailHog
-    container_name: docker-mailHog
+    image: docker-mailhog
+    container_name: docker-mailhog
     networks: 
       - lnmp
     ports:

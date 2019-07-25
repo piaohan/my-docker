@@ -15,6 +15,7 @@ RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories
 
 WORKDIR /home
 
-ENTRYPOINT ["npm"]
-
 EXPOSE 8081 8082 8083
+
+CMD [ "npm", "start" ]
+

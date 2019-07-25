@@ -7,6 +7,7 @@ services:
         args:
           - TIMEZONE=${WORKSPACE_TIMEZONE}
     container_name: docker-nginx
+    restart: always
     networks: 
       - lnmp
     volumes: 
@@ -30,6 +31,7 @@ services:
           - TIMEZONE=${WORKSPACE_TIMEZONE}
           - COMPOSER_ALLOW_SUPERUSER=${COMPOSER_ALLOW_SUPERUSER}
     container_name: docker-php
+    restart: always
     networks: 
       - lnmp
     ports:
@@ -42,20 +44,26 @@ services:
       - "$PWD/components/php/conf/php-fpm.d/www.conf:/etc/php7/php-fpm.d/www.conf"
       - "$PWD/logs/php-fpm/:/var/log/php-fpm/"
     working_dir: /var/www/
+    depends_on:
+      - "mysql"
+      - "redis"
+      - "node"
   #mysql
   mysql:
     image: mysql:5.7
     container_name: docker-mysql
+    restart: always
     networks: 
       - lnmp
     ports:
-      - ${mysql_port}:3306
+      - ${mysql_one_port}:3306
+      - ${mysql_two_port}:33060
     volumes:
-      - "$PWD/wwwroot/:/var/www/"
       - "$PWD/components/mysql/conf/my.cnf:/etc/mysql/my.cnf"
+      - "$PWD/components/mysql/init:/docker-entrypoint-initdb.d/"
       - "$PWD/components/mysql/data:/var/lib/mysql/"
       - "$PWD/logs/mysql/:/var/log/mysql/"
-    command: --character-set-server=utf8
+    command: --default-authentication-plugin=mysql_native_password 
     environment:
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
       MYSQL_DATABASE: ${MYSQL_DATABASE}
@@ -67,8 +75,8 @@ services:
         context: $PWD/components/redis
         args:
           - TIMEZONE=${WORKSPACE_TIMEZONE}
-    image: docker-redis
     container_name: docker-redis
+    restart: always
     networks: 
       - lnmp
     ports:
@@ -79,25 +87,42 @@ services:
         context: $PWD/components/beanstalkd
         args:
           - TIMEZONE=${WORKSPACE_TIMEZONE}
-    image: docker-beanstalkd
     container_name: docker-beanstalkd
+    restart: always
     networks: 
       - lnmp
     ports:
       - ${beanstalkd_port}:11300
+    depends_on:
+      - "php"
   #mailhog
   mailhog:
     build:
         context: $PWD/components/mailHog
         args:
           - TIMEZONE=${WORKSPACE_TIMEZONE}
-    image: docker-mailhog
     container_name: docker-mailhog
+    restart: always
     networks: 
       - lnmp
     ports:
       - ${mailhog_seedMail_port}:1025
       - ${mailhog_web_port}:8025
+    depends_on:
+      - "php"
+  #node(swaga)
+  node:
+    build:
+        context: $PWD/components/node
+        args:
+          - TIMEZONE=${WORKSPACE_TIMEZONE}
+    container_name: docker-node
+    networks: 
+      - lnmp
+    ports:
+      - ${node_one_port}:8081
+      - ${node_two_port}:8082
+      - ${node_there_port}:8083
 networks: 
   lnmp:
     driver: bridge

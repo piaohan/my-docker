@@ -4,7 +4,7 @@ LABEL maintainer="Leo.Mu <whatissrc@gmail.com>"
 
 ARG TIMEZONE
 
-RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories   \
+RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories \
     && apk update \
     && apk add --no-cache \
     tzdata \

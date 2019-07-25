@@ -53,6 +53,7 @@ services:
     volumes:
       - "$PWD/wwwroot/:/var/www/"
       - "$PWD/components/mysql/conf/my.cnf:/etc/mysql/my.cnf"
+       - "$PWD/components/mysql/conf/mysqld.cnf:/etc/mysql/mysql.conf.d/mysqld.cnf"
       - "$PWD/components/mysql/data:/var/lib/mysql/"
       - "$PWD/logs/mysql/:/var/log/mysql/"
     command: --character-set-server=utf8
@@ -98,6 +99,19 @@ services:
     ports:
       - ${mailhog_seedMail_port}:1025
       - ${mailhog_web_port}:8025
+  #node(swaga)
+  node:
+    build:
+        context: $PWD/components/node
+        args:
+          - TIMEZONE=${WORKSPACE_TIMEZONE}
+    image: docker-node
+    container_name: docker-node
+    working_dir: /var/node/
+    networks: 
+      - lnmp
+    ports:
+      - ${node_port}:8081
 networks: 
   lnmp:
     driver: bridge

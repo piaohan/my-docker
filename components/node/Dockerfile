@@ -11,10 +11,6 @@ RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories
     && cp /usr/share/zoneinfo/$TIMEZONE /etc/localtime \
     && apk del --no-cache  tzdata \
     && rm -rf /var/cache/apk/* \
-    && npm config set registry http://registry.npm.taobao.org \
-    && mkdir /var/node \
-    && cd /var/node \
-    && npm i @shuangren/share-api
+    && npm config set registry http://registry.npm.taobao.org 
 
-    
-EXPOSE 8081
+EXPOSE 8081 8082 8083

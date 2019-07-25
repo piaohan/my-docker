@@ -49,15 +49,15 @@ services:
   #mysql
   mysql:
     image: mysql:5.7
+    restart: always
     container_name: docker-mysql
     networks: 
       - lnmp
     ports:
       - ${mysql_port}:3306
     volumes:
-      - "$PWD/wwwroot/:/var/www/"
       - "$PWD/components/mysql/conf/my.cnf:/etc/mysql/my.cnf"
-      - "$PWD/components/mysql/conf/mysqld.cnf:/etc/mysql/mysql.conf.d/mysqld.cnf"
+      - "$PWD/components/mysql/init:/docker-entrypoint-initdb.d/"
       - "$PWD/components/mysql/data:/var/lib/mysql/"
       - "$PWD/logs/mysql/:/var/log/mysql/"
     command: --character-set-server=utf8
@@ -72,7 +72,6 @@ services:
         context: $PWD/components/redis
         args:
           - TIMEZONE=${WORKSPACE_TIMEZONE}
-    image: docker-redis
     container_name: docker-redis
     networks: 
       - lnmp
@@ -84,7 +83,6 @@ services:
         context: $PWD/components/beanstalkd
         args:
           - TIMEZONE=${WORKSPACE_TIMEZONE}
-    image: docker-beanstalkd
     container_name: docker-beanstalkd
     networks: 
       - lnmp
@@ -98,7 +96,6 @@ services:
         context: $PWD/components/mailHog
         args:
           - TIMEZONE=${WORKSPACE_TIMEZONE}
-    image: docker-mailhog
     container_name: docker-mailhog
     networks: 
       - lnmp
@@ -113,7 +110,6 @@ services:
         context: $PWD/components/node
         args:
           - TIMEZONE=${WORKSPACE_TIMEZONE}
-    image: docker-node
     container_name: docker-node
     networks: 
       - lnmp

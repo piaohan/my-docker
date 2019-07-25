@@ -107,9 +107,6 @@ services:
           - TIMEZONE=${WORKSPACE_TIMEZONE}
     image: docker-node
     container_name: docker-node
-    volumes:
-      - "$PWD/components/node/index.js:/var/node/index.js"
-    working_dir: /var/node/
     networks: 
       - lnmp
     ports:

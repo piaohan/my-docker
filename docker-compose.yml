@@ -54,7 +54,8 @@ services:
     networks: 
       - lnmp
     ports:
-      - ${mysql_port}:3306
+      - ${mysql_one_port}:3306
+      - ${mysql_rwo_port}:33060
     volumes:
       - "$PWD/components/mysql/conf/my.cnf:/etc/mysql/my.cnf"
       - "$PWD/components/mysql/init:/docker-entrypoint-initdb.d/"
@@ -114,8 +115,8 @@ services:
     networks: 
       - lnmp
     ports:
-      - ${node_web1_port}:8081
-      - ${node_web2_port}:8082
+      - ${node_one_port}:8081
+      - ${node_two_port}:8082
 networks: 
   lnmp:
     driver: bridge

@@ -42,6 +42,10 @@ services:
       - "$PWD/components/php/conf/php-fpm.d/www.conf:/etc/php7/php-fpm.d/www.conf"
       - "$PWD/logs/php-fpm/:/var/log/php-fpm/"
     working_dir: /var/www/
+    depends_on:
+      - "mysql"
+      - "redis"
+      - "node"
   #mysql
   mysql:
     image: mysql:5.7
@@ -86,6 +90,8 @@ services:
       - lnmp
     ports:
       - ${beanstalkd_port}:11300
+    depends_on:
+      - "php"
   #mailhog
   mailhog:
     build:
@@ -99,6 +105,8 @@ services:
     ports:
       - ${mailhog_seedMail_port}:1025
       - ${mailhog_web_port}:8025
+    depends_on:
+      - "php"
   #node(swaga)
   node:
     build:
@@ -110,7 +118,8 @@ services:
     networks: 
       - lnmp
     ports:
-      - ${node_port}:8081
+      - ${node_web1_port}:8081
+      - ${node_web2_port}:8082
 networks: 
   lnmp:
     driver: bridge

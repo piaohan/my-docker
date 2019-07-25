@@ -13,4 +13,8 @@ RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories
     && rm -rf /var/cache/apk/* \
     && npm config set registry http://registry.npm.taobao.org 
 
+WORKDIR /home
+
+ENTRYPOINT ["npm"]
+
 EXPOSE 8081 8082 8083

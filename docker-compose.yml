@@ -63,9 +63,7 @@ services:
       - "$PWD/components/mysql/init:/docker-entrypoint-initdb.d/"
       - "$PWD/components/mysql/data:/var/lib/mysql/"
       - "$PWD/logs/mysql/:/var/log/mysql/"
-    command: 
-      - character-set-server=utf8
-      - default-authentication-plugin=mysql_native_password 
+    command: --default-authentication-plugin=mysql_native_password 
     environment:
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
       MYSQL_DATABASE: ${MYSQL_DATABASE}

@@ -7,6 +7,7 @@ services:
         args:
           - TIMEZONE=${WORKSPACE_TIMEZONE}
     container_name: docker-nginx
+    restart: always
     networks: 
       - lnmp
     volumes: 
@@ -30,6 +31,7 @@ services:
           - TIMEZONE=${WORKSPACE_TIMEZONE}
           - COMPOSER_ALLOW_SUPERUSER=${COMPOSER_ALLOW_SUPERUSER}
     container_name: docker-php
+    restart: always
     networks: 
       - lnmp
     ports:
@@ -49,8 +51,8 @@ services:
   #mysql
   mysql:
     image: mysql:5.7
-    restart: always
     container_name: docker-mysql
+    restart: always
     networks: 
       - lnmp
     ports:
@@ -74,6 +76,7 @@ services:
         args:
           - TIMEZONE=${WORKSPACE_TIMEZONE}
     container_name: docker-redis
+    restart: always
     networks: 
       - lnmp
     ports:
@@ -85,6 +88,7 @@ services:
         args:
           - TIMEZONE=${WORKSPACE_TIMEZONE}
     container_name: docker-beanstalkd
+    restart: always
     networks: 
       - lnmp
     ports:
@@ -98,6 +102,7 @@ services:
         args:
           - TIMEZONE=${WORKSPACE_TIMEZONE}
     container_name: docker-mailhog
+    restart: always
     networks: 
       - lnmp
     ports:

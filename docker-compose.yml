@@ -53,7 +53,7 @@ services:
     volumes:
       - "$PWD/wwwroot/:/var/www/"
       - "$PWD/components/mysql/conf/my.cnf:/etc/mysql/my.cnf"
-       - "$PWD/components/mysql/conf/mysqld.cnf:/etc/mysql/mysql.conf.d/mysqld.cnf"
+      - "$PWD/components/mysql/conf/mysqld.cnf:/etc/mysql/mysql.conf.d/mysqld.cnf"
       - "$PWD/components/mysql/data:/var/lib/mysql/"
       - "$PWD/logs/mysql/:/var/log/mysql/"
     command: --character-set-server=utf8
